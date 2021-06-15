@@ -1,0 +1,19 @@
+<h1>Hello Rails</h1>
+<ul>
+    <%@articles.each do |article|%>
+        <li>
+    <%# 1 %>
+            <%# <a href="/articles/<%=article.id%>
+                <%# <%=article.title%>
+            <%# </a> %>
+    <%# 2 %>
+            <%# <a href="<%=article_path(article)%>
+                <%# <%=article.title%>
+            <%# </a> %>
+    <%# 3 %>
+            <%=link_to article.title, article%>
+        </li>
+    <%end%>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
