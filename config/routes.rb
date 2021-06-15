@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # '/article' - url pattern
   # 'index' - action from 'articles_controller' 
+  
   # get "/articles", to: "articles#index"  
   # get "/articles/:id", to: "articles#show"  
   resources :articles
