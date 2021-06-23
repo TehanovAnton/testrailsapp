@@ -9,8 +9,15 @@
         %>
     </li>    
     <li>
-        <%=link_to "Destory", articles_path(@article), 
+        <%=link_to "Destory", article_path(@article), 
             method: :delete, 
             data: { confirm: "are you sure" }%>
     </li>
 </ul>
+
+<h2>Comments</h2>
+<%# выведет по шаблону всю колекцию %>
+<%= render @article.comments %>
+
+<h1>Add Comment</h1>
+<%= render "comments/form" %>

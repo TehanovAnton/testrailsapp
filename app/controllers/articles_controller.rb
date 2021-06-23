@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-# Read
+  http_basic_authenticate_with name: 'dhh', password: 'secret',
+                               except: %i[index show]
+
+  # Read
   def index
     @articles = Article.all
   end
@@ -8,9 +13,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-# Create
+  # Create
   def new
-    @article = Article.new()
+    @article = Article.new
   end
 
   def create
@@ -23,7 +28,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-# Update
+  # Update
   def edit
     @article = Article.find(params[:id])
   end
@@ -37,16 +42,17 @@ class ArticlesController < ApplicationController
     end
   end
 
-# Delate
+  # Delate
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
 
     redirect_to root_path
   end
-  
+
   private
-    def article_params
-      params.require(:article).permit(:title, :body)
-    end
+
+  def article_params
+    params.require(:article).permit(:title, :body, :status)
+  end
 end
